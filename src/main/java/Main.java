@@ -1,16 +1,21 @@
 import dao.ExchangeRatesDao;
 import model.ExchangeRates;
+import pages.SberbankPage;
 
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
 
+
         ExchangeRatesDao exchangeRatesDao = new ExchangeRatesDao();
+        SberbankPage sberbankPage = new SberbankPage();
+        sberbankPage.getListExchangeRates();
 
-        ExchangeRates exchangeRates = new ExchangeRates(new Date(), "USD", 30.30, 31.20, "СБЕРБАНК");
-        exchangeRatesDao.insertExchangeRates(exchangeRates);
+        for (ExchangeRates exchangeRates: sberbankPage.getListExchangeRates()){
+            exchangeRatesDao.insertExchangeRates(exchangeRates);
 
+        }
 
     }
 }

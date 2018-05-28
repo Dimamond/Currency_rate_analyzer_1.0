@@ -28,6 +28,8 @@ public class ExchangeRatesDao {
 
     }
 
+
+
     public Long selectBankIdByBankName(String bankName){
         Long bankId = null;
         Connection connection = null;
@@ -79,6 +81,7 @@ public class ExchangeRatesDao {
             PreparedStatement pst = connection.prepareStatement("INSERT INTO" +
                     " exchange_rates (date_parsing, date_of_relevance, currencies_id, sell, buy, bank_id)" +
                     " VALUES (?, ?, ?, ?, ?, ?)");
+
             pst.setDate(1, new Date(exchangeRates.getDateParsing().getTime()));
             pst.setDate(2, new Date(exchangeRates.getDateOfRelevance().getTime()));
             pst.setLong(3, selectCurrenciesIdByCurrenciesName(exchangeRates.getCurrencies()));
