@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/currency rate analyzer.iml" filepath="$PROJECT_DIR$/.idea/modules/currency rate analyzer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/currency_rate_analyzer.iml" filepath="$PROJECT_DIR$/.idea/modules/currency_rate_analyzer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/currency_rate_analyzer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/currency_rate_analyzer_main.iml" group="currency_rate_analyzer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/currency_rate_analyzer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/currency_rate_analyzer_test.iml" group="currency_rate_analyzer" />
+    </modules>
+  </component>
+</project>
