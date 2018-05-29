@@ -82,8 +82,8 @@ public class ExchangeRatesDao {
                     " exchange_rates (date_parsing, date_of_relevance, currencies_id, sell, buy, bank_id)" +
                     " VALUES (?, ?, ?, ?, ?, ?)");
 
-            pst.setDate(1, new Date(exchangeRates.getDateParsing().getTime()));
-            pst.setDate(2, new Date(exchangeRates.getDateOfRelevance().getTime()));
+            pst.setTimestamp(1, new Timestamp(exchangeRates.getDateParsing().getTime()));
+            pst.setTimestamp(2, new Timestamp(exchangeRates.getDateOfRelevance().getTime()));
             pst.setLong(3, selectCurrenciesIdByCurrenciesName(exchangeRates.getCurrencies()));
             pst.setDouble(4, exchangeRates.getSell());
             pst.setDouble(5, exchangeRates.getBuy());

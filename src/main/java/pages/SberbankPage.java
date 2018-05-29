@@ -16,7 +16,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class SberbankPage {
+public class SberbankPage implements Page {
     private final static String BANK = "СБЕРБАНК";
 
 
@@ -49,18 +49,28 @@ public class SberbankPage {
         }
     }
 
-    private List<ExchangeRates> getInfoAboutCurrencies(){
+    public Date getDateOfRelevance(){
+        String dateTemp = $(By.cssSelector("div.rates-current__info")).getText().substring(18, 34).trim();
 
-        List<ExchangeRates> list = new ArrayList<>();
+        SimpleDateFormat dateFormat;
 
-        String dateTemp = $(By.cssSelector("div.rates-current__info")).getText().substring(18, 28);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        if(dateTemp.length() == 15)
+            dateFormat = new SimpleDateFormat("dd.MM.yyyy H:mm");
+        else
+            dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
         Date dateOfRelevance = null;
         try {
             dateOfRelevance = dateFormat.parse(dateTemp);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return dateOfRelevance;
+    }
+
+    private List<ExchangeRates> getInfoAboutCurrencies(){
+
+        List<ExchangeRates> list = new ArrayList<>();
 
         List<SelenideElement> elements = $(By.cssSelector("table.rates-current__table")).$$(By.tagName("tr"));
 
@@ -80,7 +90,7 @@ public class SberbankPage {
             temp1 = se.$(By.cssSelector("td.rates-current__table-cell_column_sell")).$(By.className("rates-current__rate-value")).getText();
             Double sell = Double.parseDouble(temp1.replace(",", "."));
 
-            ExchangeRates exchangeRates = new ExchangeRates(dateOfRelevance, currency, sell/unit, buy/unit, BANK);
+            ExchangeRates exchangeRates = new ExchangeRates(getDateOfRelevance(), currency, sell/unit, buy/unit, BANK);
             list.add(exchangeRates);
 
         }
