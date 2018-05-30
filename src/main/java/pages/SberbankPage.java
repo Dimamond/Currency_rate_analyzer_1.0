@@ -4,6 +4,8 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import model.ExchangeRates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 import java.text.ParseException;
@@ -17,6 +19,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class SberbankPage implements Page {
+    private final static Logger LOG = LogManager.getLogger(SberbankPage.class.getName());
     private final static String BANK = "СБЕРБАНК";
 
 
@@ -63,7 +66,7 @@ public class SberbankPage implements Page {
         try {
             dateOfRelevance = dateFormat.parse(dateTemp);
         } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
         return dateOfRelevance;
     }

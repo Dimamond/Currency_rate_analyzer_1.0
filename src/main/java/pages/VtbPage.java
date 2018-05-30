@@ -3,6 +3,8 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import model.ExchangeRates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 
@@ -15,7 +17,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class VtbPage implements Page {
-
+    private final static Logger LOG = LogManager.getLogger(VtbPage.class.getName());
     private final static String BANK = "ВТБ";
 
     private void initialization(){
@@ -38,7 +40,7 @@ public class VtbPage implements Page {
         try {
             dateOfRelevance = dateFormat.parse(dateTemp);
         } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
         return dateOfRelevance;
     }

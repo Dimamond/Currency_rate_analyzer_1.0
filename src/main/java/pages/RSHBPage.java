@@ -2,7 +2,10 @@ package pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import dao.ExchangeRatesDao;
 import model.ExchangeRates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 import java.text.ParseException;
@@ -13,6 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class RSHBPage implements Page {
+    private final static Logger LOG = LogManager.getLogger(RSHBPage.class.getName());
     private final static String BANK = "РоссельхозБанк";
 
     private void initialization(){
@@ -30,7 +34,7 @@ public class RSHBPage implements Page {
         try {
             dateOfRelevance = dateFormat.parse(dateTemp);
         } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
         return dateOfRelevance;
     }

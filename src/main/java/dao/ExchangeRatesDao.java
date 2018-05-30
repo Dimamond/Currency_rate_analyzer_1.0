@@ -2,15 +2,18 @@ package dao;
 
 
 import model.ExchangeRates;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
 public class ExchangeRatesDao {
+    private final static Logger LOG = LogManager.getLogger(ExchangeRatesDao.class.getName());
     static {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
     }
 
@@ -23,7 +26,7 @@ public class ExchangeRatesDao {
         try {
             connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
 
     }
@@ -44,7 +47,7 @@ public class ExchangeRatesDao {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         } finally {
             closeConnection(connection);
         }
@@ -65,7 +68,7 @@ public class ExchangeRatesDao {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         } finally {
             closeConnection(connection);
         }
@@ -91,7 +94,7 @@ public class ExchangeRatesDao {
             pst.execute();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }finally {
             closeConnection(connection);
         }

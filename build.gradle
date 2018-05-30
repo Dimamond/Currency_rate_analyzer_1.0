@@ -12,5 +12,11 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.4'
+    compile group: 'com.codeborne', name: 'selenide', version: '4.11.4'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+
 
 }
+
+
