@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.Date;
 
 public class ExchangeRatesDao {
     private final static Logger LOG = LogManager.getLogger(ExchangeRatesDao.class.getName());
@@ -85,8 +86,15 @@ public class ExchangeRatesDao {
                     " exchange_rates (date_parsing, date_of_relevance, currencies_id, sell, buy, bank_id)" +
                     " VALUES (?, ?, ?, ?, ?, ?)");
 
-            pst.setTimestamp(1, new Timestamp(exchangeRates.getDateParsing().getTime()));
-            pst.setTimestamp(2, new Timestamp(exchangeRates.getDateOfRelevance().getTime()));
+
+            if(exchangeRates.getDateParsing() != null){
+                pst.setTimestamp(1, new Timestamp(exchangeRates.getDateParsing().getTime()));
+            }else pst.setTimestamp(1, null);
+
+            if(exchangeRates.getDateOfRelevance() != null){
+                pst.setTimestamp(2, new Timestamp(exchangeRates.getDateOfRelevance().getTime()));
+            }else pst.setTimestamp(2, null);
+
             pst.setLong(3, selectCurrenciesIdByCurrenciesName(exchangeRates.getCurrencies()));
             pst.setDouble(4, exchangeRates.getSell());
             pst.setDouble(5, exchangeRates.getBuy());

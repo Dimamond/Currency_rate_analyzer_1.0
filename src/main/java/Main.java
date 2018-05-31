@@ -20,7 +20,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Page p = new AlfabankPage();
+        Page p = new PsbankPage();
+        //p.getListExchangeRates();
+
         ExchangeRatesDao exchangeRatesDao = new ExchangeRatesDao();
 
         for (ExchangeRates exchangeRates : p.getListExchangeRates()){
@@ -30,7 +32,7 @@ public class Main {
 
 
         //Main main = new Main();
-        //main.init()
+        //main.init();
     }
 
     private void init(){
@@ -40,11 +42,13 @@ public class Main {
         pages.add(new VtbPage());
         pages.add(new NKCPage());
         pages.add(new AlfabankPage());
+        pages.add(new MKBPage());
+        pages.add(new OpenbankPage());
+        pages.add(new UnicreditbankPage());
+        pages.add(new PsbankPage());
 
         Service service = new Service(pages, new ExchangeRatesDao());
-
         Timer timer = new Timer();
-
         timer.schedule(service, 0, PERIOD);
 
 
@@ -55,6 +59,7 @@ public class Main {
                 String string = reader.readLine();
                 if(string.equals("exit")){
                     timer.cancel();
+                    reader.close();
                     break;
                 }
             } catch (IOException e) {
