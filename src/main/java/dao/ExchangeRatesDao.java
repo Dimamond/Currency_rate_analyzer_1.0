@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
-import java.util.Date;
+
 
 public class ExchangeRatesDao {
     private final static Logger LOG = LogManager.getLogger(ExchangeRatesDao.class.getName());

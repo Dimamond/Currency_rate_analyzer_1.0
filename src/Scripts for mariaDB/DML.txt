@@ -1,0 +1,18 @@
+INSERT INTO currencies	(name) VALUES ('USD');
+INSERT INTO currencies	(name) VALUES ('EUR');
+INSERT INTO currencies	(name) VALUES ('GBR');
+INSERT INTO currencies	(name) VALUES ('CHF');
+INSERT INTO currencies	(name) VALUES ('CNY');
+INSERT INTO currencies	(name) VALUES ('JPY');
+
+
+INSERT INTO banks (name, page, is_parsing) VALUES ('СБЕРБАНК', 'https://www.sberbank.ru/ru/quotes/currencies', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('ВТБ', 'https://www.vtb.ru/personal/platezhi-i-perevody/obmen-valjuty/', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('РоссельхозБанк', 'https://www.rshb.ru/branches/moscow/currency-rates/', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('Национальный клиринговый центр', 'http://www.nkcbank.ru/viewCatalog.do?menuKey=5', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('Альфа-Банк', 'https://alfabank.ru/currency/', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('Московский кредитный банк', 'https://mkb.ru/exchange-rate', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('ФК Открытие', 'https://www.open.ru/exchange-person', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('ЮниКредит Банк', 'https://www.unicreditbank.ru/ru/personal/all-currencies.html', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('Промсвязьбанк', 'https://www.psbank.ru/Personal/Everyday/Rates/HappyHours_IB?from=currencyWidget', 1);
+INSERT INTO banks (name, page, is_parsing) VALUES ('Райффайзен Банк', 'https://www.raiffeisen.ru/currency_rates/', 1);

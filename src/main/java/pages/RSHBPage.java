@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
-import dao.ExchangeRatesDao;
 import model.ExchangeRates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

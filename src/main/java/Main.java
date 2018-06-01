@@ -1,6 +1,6 @@
 import dao.ExchangeRatesDao;
 
-import model.ExchangeRates;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pages.*;
@@ -20,32 +20,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Page p = new PsbankPage();
-        //p.getListExchangeRates();
-
-        ExchangeRatesDao exchangeRatesDao = new ExchangeRatesDao();
-
-        for (ExchangeRates exchangeRates : p.getListExchangeRates()){
-            exchangeRatesDao.insertExchangeRates(exchangeRates);
-        }
-
-
-
-        //Main main = new Main();
-        //main.init();
+        Main main = new Main();
+        main.init();
     }
 
     private void init(){
         List<Page> pages = new ArrayList<>();
-        pages.add(new RSHBPage());
         pages.add(new SberbankPage());
         pages.add(new VtbPage());
+        pages.add(new RSHBPage());
         pages.add(new NKCPage());
         pages.add(new AlfabankPage());
         pages.add(new MKBPage());
         pages.add(new OpenbankPage());
         pages.add(new UnicreditbankPage());
         pages.add(new PsbankPage());
+        pages.add(new RaiffeisenBank());
 
         Service service = new Service(pages, new ExchangeRatesDao());
         Timer timer = new Timer();

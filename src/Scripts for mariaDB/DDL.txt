@@ -1,0 +1,40 @@
+CREATE DATABASE `exchange_rates_db`
+
+
+
+------------------------------------------
+
+CREATE TABLE `banks` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	`page` VARCHAR(100) NOT NULL,
+	`is_parsing` TINYINT(4) UNSIGNED NULL DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `name` (`name`),
+	UNIQUE INDEX `page` (`page`)
+);
+
+
+
+CREATE TABLE `currencies` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `name` (`name`)
+);
+
+
+CREATE TABLE `exchange_rates` (
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`date_parsing` DATETIME NOT NULL,
+	`date_of_relevance` DATETIME NULL DEFAULT NULL,
+	`currencies_id` BIGINT(20) NOT NULL,
+	`sell` DOUBLE UNSIGNED NULL DEFAULT NULL,
+	`buy` DOUBLE UNSIGNED NULL DEFAULT NULL,
+	`bank_id` BIGINT(20) NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `FK_exchange_rates_currencies` (`currencies_id`),
+	INDEX `FK_exchange_rates_banks` (`bank_id`),
+	CONSTRAINT `FK_exchange_rates_banks` FOREIGN KEY (`bank_id`) REFERENCES `banks` (`id`) ON UPDATE CASCADE ON DELETE NO ACTION,
+	CONSTRAINT `FK_exchange_rates_currencies` FOREIGN KEY (`currencies_id`) REFERENCES `currencies` (`id`) ON UPDATE CASCADE ON DELETE NO ACTION
+);
